@@ -1,0 +1,19 @@
+
+<h1> List of Transactions </h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Merchant</th>
+    <th>Tag</th>
+    <th>Value</th>
+  </tr>
+  <% for transaction in @transactions %>
+  <tr>
+    <td><%= transaction.id %></td>
+    <td><%= transaction.merchant %></td>
+        <td><%=transaction.tag_id %> </td>
+        <td><%= transaction.value %> </td>
+  </tr>
+  <% end %>
+</table>
