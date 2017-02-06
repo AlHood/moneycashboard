@@ -27,9 +27,6 @@ transaction2.save
 transaction3.save
 
 
-user = User.new(2200, 600)
-
-user.save
 
 
 

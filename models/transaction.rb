@@ -7,15 +7,15 @@ require_relative("../db/sql_runner")
 class Transaction
 
   attr_reader :id
-attr_accessor :merchant, :tag_id, :value, :datestore
+  attr_accessor :merchant, :tag_id, :value, :datestore
 
-def initialize(options)
-@id = options['id'].to_i if options['id'] != nil
-@merchant = options['merchant']
-@tag_id = options['tag_id']
-@value = options['value'].to_i
+  def initialize(options)
+    @id = options['id'].to_i if options['id'] != nil
+    @merchant = options['merchant']
+    @tag_id = options['tag_id']
+    @value = options['value'].to_i
 
-@datestore = Date.parse(options['datestore'])
+    @datestore = Date.parse(options['datestore'])
 
 
 # @date = Date.new(options['date'])
@@ -61,36 +61,73 @@ end
 
 def delete()
   sql = "DELETE FROM transactions WHERE id =#{@id};"
-SqlRunner.run(sql)
+  SqlRunner.run(sql)
 end
 
 def update()
   sql = "UPDATE transactions SET (merchant, tag_id, value, datestore) = ('#{@merchant}', #{@tag_id}, #{@value}, #{@datestore}) WHERE id = #{@id};"
   SqlRunner.run(sql)
+end
 
+def self.return_month(month)
+  sql = "SELECT * FROM transactions WHERE EXTRACT(MONTH FROM datestore) = #{month};"
+  transactions = SqlRunner.run(sql)
+  return transactions.map { |transaction| Transaction.new(transaction)}
+#then use an array method to filter out transactions where transaction.datestore.month does not equal argument
 end
 
 def self.total
+  sql = "SELECT value FROM transactions;"
+  values = SqlRunner.run(sql)
+  total = []
+  for value in values 
+    total.unshift(value['value'].to_i)
+  end
+  return total.inject(:+)
 end
+
+
 
 def self.total_by_month(month)
+    sql = "SELECT * FROM transactions WHERE EXTRACT(MONTH FROM datestore) = #{month};"
+    values = SqlRunner.run(sql)
+    total = []
+    for value in values 
+      total.unshift(value['value'].to_i)
+    end
+    return total.inject(:+)
   end
 
-def self.return_month(month)
-end
+
+
+
+# Two suggestsions from john
+# SELECT * FROM transactions WHERE EXTRACT(MONTH FROM datestore) = 5;
+# SELECT sum(value) FROM transactions WHERE EXTRACT(MONTH FROM datestore) = 5;
+
+
 
 def self.total_for_tag(tag_id)
+  sql = "SELECT value FROM transactions WHERE tag_id=#{tag_id.to_i};"
+  values = SqlRunner.run(sql)
+  total = []
+  for value in values 
+    total.unshift(value['value'].to_i)
   end
-
-
-
-
-
-
-
-
-
-
+  return total.inject(:+)
+end
 
 
 end
+
+
+
+
+
+
+
+
+
+
+
+
