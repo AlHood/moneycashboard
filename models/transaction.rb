@@ -13,7 +13,8 @@ def initialize(options)
 @id = options['id'].to_i if options['id'] != nil
 @merchant = options['merchant']
 @tag_id = options['tag_id']
-@value = options['value']
+@value = options['value'].to_i
+
 @datestore = Date.parse(options['datestore'])
 
 
@@ -33,7 +34,7 @@ end
 
 
 def save()
-  sql = "INSERT INTO transactions (merchant, tag_id, value, datestore) VALUES ('#{@merchant}', #{@tag_id}, #{@value}, #{@datestore}) RETURNING *;"
+  sql = "INSERT INTO transactions (merchant, tag_id, value, datestore) VALUES ('#{@merchant}', #{@tag_id}, #{@value}, '#{@datestore}') RETURNING *;"
   transaction = SqlRunner.run( sql ).first
   @id = transaction['id'].to_i
 end
@@ -75,6 +76,11 @@ end
 def self.total_by_month(month)
   end
 
+def self.return_month(month)
+end
+
+def self.total_for_tag(tag_id)
+  end
 
 
 

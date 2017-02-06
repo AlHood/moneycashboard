@@ -1,0 +1,35 @@
+
+
+<h1> Table of tags </h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Tag Name</th>
+  </tr>
+  <% for tag in @tags %>
+  <tr>
+    <td><%= tag.id %></td>
+    <td><%= tag.tag_name %></td>
+  </tr>
+  <% end %>
+</table>
+
+
+<h1>Add new tag</h1>
+<form action="/budget/tag/new/" method="post">
+
+
+    <label>New tag:
+      <input type="text" name="tag_name">
+    </label>
+
+
+    <input type="submit" value="SUBMIT">
+  </form>
+
+
+
+
+
+
+

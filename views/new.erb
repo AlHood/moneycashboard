@@ -1,2 +1,33 @@
-<h1> nah </h1>
 
+
+<h1>Add new transaction</h1>
+<form action="/budget/new/" method="post">
+
+  <label>Merchant:
+    <input type="text" name="merchant">
+  </label>
+
+  <label>Transaction type:
+
+
+    <select name="tag_id">
+      <% for tag in @tags %>
+      <option value="<%= tag.id %>"><%= tag.tag_name %></option>
+      <%end %>
+    </select>
+    </label
+
+
+
+    <label>Value:
+      <input type="text" name="value">
+    </label>
+
+
+    <label>Date (Format: YYYY-MM-DD) 
+    <input type="text" name = "datestore">
+    </label>
+
+
+    <input type="submit" value="SUBMIT">
+  </form>

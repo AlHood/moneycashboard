@@ -7,6 +7,7 @@
     <th>Merchant</th>
     <th>Tag</th>
     <th>Value</th>
+    <th>Date</th>
   </tr>
   <% for transaction in @transactions %>
   <tr>
@@ -14,6 +15,8 @@
     <td><%= transaction.merchant %></td>
         <td><%=transaction.tag_id %> </td>
         <td><%= transaction.value %> </td>
+        <td> <%= transaction.datestore %></td>
+
   </tr>
   <% end %>
 </table>

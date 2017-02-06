@@ -8,9 +8,9 @@ class Tag
   attr_reader :id
   attr_accessor :tag_name
 
-def initialize(tag_name)
-  # @id = options['id'].to_i if options['id'] != nil
-@tag_name = tag_name
+def initialize(options)
+@id = options['id'].to_i if options['id'] != nil
+@tag_name = options['tag_name']
 end
 
 def save()
@@ -37,7 +37,11 @@ def delete()
 SqlRunner.run(sql)
 end
 
+def update()
+  sql = "UPDATE tags SET (tag) = ('#{@merchant}', #{@tag_id}, #{@value}, #{@datestore}) WHERE id = #{@id};"
+  SqlRunner.run(sql)
 
+end
 
 
 

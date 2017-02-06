@@ -1,0 +1,27 @@
+
+
+
+<h1> Budget Properties </h1>
+
+<% for user in @users %>
+<p> <%=user.funds%> </p>
+<p> <%=user.budget%> </p>
+<% end %>
+
+
+
+<h1>Update Budget Properties</h1>
+<form action="/user/new/" method="post">
+
+
+    <label>New Funds Value:
+      <input type="text" name="funds">
+    </label>
+
+    <label>New Monthly Budget Limit:
+      <input type="text" name="budget">
+    </label>
+
+    <input type="submit" value="SUBMIT">
+  </form>
+

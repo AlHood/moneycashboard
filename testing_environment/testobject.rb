@@ -15,9 +15,7 @@ def save
     SqlRunner.run( sql )
   end
 
-def self.select_by_month(month)
-sql = "SELECT * FROM datetest WHERE datestore.month = '#{month}"
-end
+
 
 def self.all()
   sql = "SELECT * FROM datetest"
@@ -27,3 +25,4 @@ end
 
 
 end
+

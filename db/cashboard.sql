@@ -1,5 +1,5 @@
-DROP TABLE transactions CASCADE; 
 DROP TABLE tags CASCADE;
+DROP TABLE transactions CASCADE; 
 DROP TABLE users CASCADE;
 
 
