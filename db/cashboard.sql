@@ -15,12 +15,14 @@ CREATE TABLE transactions (
 id SERIAL8 primary key, 
 merchant VARCHAR(255),
 tag_id INT8 REFERENCES tags(id) ON DELETE CASCADE,
-value INT8 
-day INT4
-month INT4
-year INT4 
--- date (but not yet)
+value INT8, 
+datestore date 
 );
+
+-- day INT4
+-- month INT4
+-- year INT4 
+-- date (but not yet). mmmmm. SQL does in fact support a variety of date formats. However 
 
 
 

@@ -1,4 +1,5 @@
 require( 'pg') 
+require( 'date' )
 require_relative("../db/sql_runner")
 
 
@@ -6,16 +7,21 @@ require_relative("../db/sql_runner")
 class Transaction
 
   attr_reader :id
-attr_accessor :merchant, :tag_id, :value
+attr_accessor :merchant, :tag_id, :value, :datestore
 
 def initialize(options)
 @id = options['id'].to_i if options['id'] != nil
 @merchant = options['merchant']
 @tag_id = options['tag_id']
 @value = options['value']
-@day = options['day']
-@month = options['month']
-@year = options['year']
+@datestore = Date.parse(options['datestore'])
+
+
+# @date = Date.new(options['date'])
+
+# @day = options['day']
+# @month = options['month']
+# @year = options['year']
 end
 
 # ok so
@@ -27,7 +33,7 @@ end
 
 
 def save()
-  sql = "INSERT INTO transactions (merchant, tag_id, value) VALUES ('#{@merchant}', #{@tag_id}, #{@value}) RETURNING *;"
+  sql = "INSERT INTO transactions (merchant, tag_id, value, datestore) VALUES ('#{@merchant}', #{@tag_id}, #{@value}, #{@datestore}) RETURNING *;"
   transaction = SqlRunner.run( sql ).first
   @id = transaction['id'].to_i
 end
@@ -58,7 +64,7 @@ SqlRunner.run(sql)
 end
 
 def update()
-  sql = "UPDATE transactions SET (merchant, tag_id, value) = ('#{@merchant}', #{@tag_id}, #{@value}) WHERE id = #{@id};"
+  sql = "UPDATE transactions SET (merchant, tag_id, value, datestore) = ('#{@merchant}', #{@tag_id}, #{@value}, #{@datestore}) WHERE id = #{@id};"
   SqlRunner.run(sql)
 
 end

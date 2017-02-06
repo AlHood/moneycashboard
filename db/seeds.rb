@@ -7,15 +7,17 @@ require( 'pry-byebug' )
 Transaction.delete_all()
 Tag.delete_all()
 
-# transaction1 = Transaction.new('first_name' => "Harry", 'surname' => "Potter", 'house_id' => 1, 'age' => 12)
+
 
 tag1 = Tag.new("Bills/Utilities")
 tag2 = Tag.new("Food")
 tag3 = Tag.new("Entertainment")
 
-transaction1 = Transaction.new('merchant' => "Tesco", 'tag_id' => 2, 'value' => 100)
-transaction2 = Transaction.new('merchant' => "Betheringford & Montanepeace Estate Agents", 'tag_id' => 1, 'value' => 300)
-transaction3 = Transaction.new('merchant' => "Tesco", 'tag_id' => 3, 'value' => 50)
+# HEY Pal - just because ruby interprets these as hashes due to the hash rocket being present, doesn't mean you can always get away without your {}
+
+transaction1 = Transaction.new('merchant' => "Tesco", 'tag_id' => 2, 'value' => 100, 'datestore' => "2017-05-01")
+transaction2 = Transaction.new('merchant' => "Betheringford & Montanepeace Estate Agents", 'tag_id' => 1, 'value' => 300, 'datestore' => "2017-05-01")
+transaction3 = Transaction.new('merchant' => "Tesco", 'tag_id' => 3, 'value' => 50, 'datestore' => "2017-05-01")
 
 
 tag1.save
