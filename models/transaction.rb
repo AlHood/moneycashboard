@@ -40,7 +40,7 @@ def save()
 end
 
 def self.all
-  sql = "SELECT * FROM transactions;"
+  sql = "SELECT * FROM transactions ORDER BY id;"
   transactions = SqlRunner.run(sql)
   return transactions.map { |transaction| Transaction.new(transaction)}
 end
@@ -73,8 +73,9 @@ def self.return_month(month)
   sql = "SELECT * FROM transactions WHERE EXTRACT(MONTH FROM datestore) = #{month};"
   transactions = SqlRunner.run(sql)
   return transactions.map { |transaction| Transaction.new(transaction)}
-#then use an array method to filter out transactions where transaction.datestore.month does not equal argument
 end
+
+
 
 def self.total
   sql = "SELECT value FROM transactions;"
@@ -115,6 +116,12 @@ def self.total_for_tag(tag_id)
     total.unshift(value['value'].to_i)
   end
   return total.inject(:+)
+end
+
+def self.return_tag(tag_id)
+  sql = "SELECT * FROM transactions WHERE tag_id=#{tag_id.to_i};"
+  transactions = SqlRunner.run(sql)
+  return transactions.map { |transaction| Transaction.new(transaction)}
 end
 
 

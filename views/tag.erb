@@ -5,15 +5,15 @@
   <tr>
     <th>ID</th>
     <th>Tag Name</th>
-    <th> Delete </th>
+    <th> Delete - Caution: Will Delete All Associated Transactions </th>
   </tr>
   <% for tag in @tags %>
   <tr>
     <td><%= tag.id %></td>
     <td><%= tag.tag_name %></td>
-  <td><form action="/budget/tag/delete/<%= tag.id %>" method="POST">
+  <td><div align="center"><form action="/budget/tag/delete/<%= tag.id %>" method="POST">
     <input type="submit" value="delete" />
-  </form></td>
+  </form></div></td>
 
   </tr>
   

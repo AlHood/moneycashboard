@@ -71,6 +71,22 @@ Transaction.delete(params[:id])
 redirect to("/budget/")
 end
 
+# get '/budget/advanced/' do
+#  @transactions = Transaction.all
+#  @tags = Tag.all
+#   erb(:budget_advanced)
+# end
 
+post '/budget/show/tag/' do
+  @transactions = Transaction.return_tag(params[:tag_id])
+erb (:budget_tag)
+end
+
+
+
+post "/budget/show/month/" do
+@transactions = Transaction.return_month(params[:month])
+erb (:budget_month)
+end
 
 

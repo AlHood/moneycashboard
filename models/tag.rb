@@ -20,7 +20,8 @@ def save()
 end
 
 def self.all
-  sql = "SELECT * FROM tags;"
+  # sql = "SELECT * FROM tags;"
+  sql = "SELECT * FROM tags ORDER BY id;"
   tags = SqlRunner.run(sql)
   return tags.map { |tag| Tag.new(tag)}
 end

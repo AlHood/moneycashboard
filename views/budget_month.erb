@@ -1,0 +1,30 @@
+
+<h1> Total Spending: </h1>
+<p>Total spent month: <%= Transaction.total_by_month(params[:month]) %> </p>
+
+
+<h1> List of Transactions for your chosen month </h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Merchant</th>
+    <th>Tag</th>
+    <th>Value</th>
+    <th>Date</th>
+    <th>Delete</th>
+  </tr>
+  <% for transaction in @transactions %>
+  <tr>
+    <td><%= transaction.id %></td>
+    <td><%= transaction.merchant %></td>
+        <td><%= Tag.return_name(transaction.tag_id) %> </td>
+        <td><%= transaction.value %> </td>
+        <td> <%= transaction.datestore.strftime("%d %b %Y") %></td>
+        <td><form action="/budget/delete/<%= transaction.id %>" method="POST">
+          <input type="submit" value="delete" />
+        </form></td>
+  </tr>
+  <% end %>
+</table>
+
