@@ -7,9 +7,9 @@ require( 'pry-byebug' )
 
 
 
-tag1 = Tag.new("Bills/Utilities")
-tag2 = Tag.new("Food")
-tag3 = Tag.new("Entertainment")
+tag1 = Tag.new({'tag_name' => "Bills/Utilities"})
+tag2 = Tag.new({'tag_name' => "Food"})
+tag3 = Tag.new({'tag_name' => "Entertainment"})
 
 # HEY Pal - just because ruby interprets these as hashes due to the hash rocket being present, doesn't mean you can always get away without your {}
 

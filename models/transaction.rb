@@ -118,6 +118,13 @@ def self.total_for_tag(tag_id)
 end
 
 
+def self.delete(id)
+  sql = "DELETE FROM transactions where id = #{id}"
+  SqlRunner.run( sql )
+end
+
+
+
 end
 
 

@@ -42,6 +42,12 @@ post '/budget/tag/new/' do
   erb (:tag_create)
 end 
 
+post '/budget/tag/edit/' do
+  @newtag = Tag.new(params)
+  @newtag.update
+  erb (:tag_edit)
+end 
+
 get '/user/' do
 @users = User.all
 erb(:user)
@@ -55,8 +61,15 @@ User.delete_all
 end
 
 
+post '/budget/tag/delete/:id' do
+Tag.delete(params[:id])
+redirect to("/budget/tag/")
+end
 
-
+post '/budget/delete/:id' do
+Transaction.delete(params[:id])
+redirect to("/budget/")
+end
 
 
 

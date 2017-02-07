@@ -5,12 +5,19 @@
   <tr>
     <th>ID</th>
     <th>Tag Name</th>
+    <th> Delete </th>
   </tr>
   <% for tag in @tags %>
   <tr>
     <td><%= tag.id %></td>
     <td><%= tag.tag_name %></td>
+  <td><form action="/budget/tag/delete/<%= tag.id %>" method="POST">
+    <input type="submit" value="delete" />
+  </form></td>
+
   </tr>
+  
+
   <% end %>
 </table>
 
@@ -27,7 +34,21 @@
     <input type="submit" value="SUBMIT">
   </form>
 
+  <h1>Edit tag</h1>
 
+  <form action="/budget/tag/edit/" method="post">
+
+  <label>ID:
+    <input type="text" name="id">
+  </label>
+
+      <label>New name:
+        <input type="text" name="tag_name">
+      </label>
+
+
+      <input type="submit" value="SUBMIT">
+    </form>
 
 
 

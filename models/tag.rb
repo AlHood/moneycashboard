@@ -38,15 +38,23 @@ SqlRunner.run(sql)
 end
 
 def update()
-  sql = "UPDATE tags SET (tag) = ('#{@merchant}', #{@tag_id}, #{@value}, #{@datestore}) WHERE id = #{@id};"
+  sql = "UPDATE tags SET (tag_name) = ('#{@tag_name}') WHERE id = #{@id};"
   SqlRunner.run(sql)
 
 end
 
+def self.return_name(input)
+sql = "SELECT * FROM tags WHERE id=#{input.to_i};"
+result = SqlRunner.run(sql).first
+tagname = Tag.new(result)
+return tagname.tag_name
 
+end
 
-
-
+def self.delete(id)
+  sql = "DELETE FROM tags where id = #{id}"
+  SqlRunner.run( sql )
+end
 
 
 

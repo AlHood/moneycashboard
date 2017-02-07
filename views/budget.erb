@@ -8,15 +8,18 @@
     <th>Tag</th>
     <th>Value</th>
     <th>Date</th>
+    <th>Delete</th>
   </tr>
   <% for transaction in @transactions %>
   <tr>
     <td><%= transaction.id %></td>
     <td><%= transaction.merchant %></td>
-        <td><%=transaction.tag_id %> </td>
+        <td><%= Tag.return_name(transaction.tag_id) %> </td>
         <td><%= transaction.value %> </td>
-        <td> <%= transaction.datestore %></td>
-
+        <td> <%= transaction.datestore.strftime("%d %b %Y") %></td>
+        <td><form action="/budget/delete/<%= transaction.id %>" method="POST">
+          <input type="submit" value="delete" />
+        </form></td>
   </tr>
   <% end %>
 </table>
