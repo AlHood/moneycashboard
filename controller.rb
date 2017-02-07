@@ -15,6 +15,10 @@ end
 
 get '/budget/' do
   @transactions = Transaction.all 
+  @tags = Tag.all
+  @months = [ { 'index' => 1, 'name' => 'January'}, { 'index' => 2, 'name' => 'January'}, { 'index' => 3, 'name' => 'January'}, { 'index' => 4, 'name' => 'January'}, { 'index' => 5, 'name' => 'January'}, { 'index' => 6, 'name' => 'January'}, { 'index' => 7, 'name' => 'January'}, { 'index' => 8, 'name' => 'January'}, { 'index' => 9, 'name' => 'January'}, { 'index' => 10, 'name' => 'January'}, { 'index' => 11, 'name' => 'January'}, { 'index' => 12, 'name' => 'January'} ]
+
+
   erb ( :budget )
 end
 

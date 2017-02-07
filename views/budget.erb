@@ -6,11 +6,17 @@
 
 <p> Show total spending by tag: </p> <form action="/budget/show/tag/" method="post">
 
+<select name="tag_id">
+  <% for tag in @tags %>
+  <option value="<%= tag.id %>"><%= tag.tag_name %></option>
+  <%end %>
+</select>
 
+<!-- 
     <label>Tag ID:
       <input type="text" name="tag_id">
     </label>
-
+ -->
 
     <input type="submit" value="SUBMIT">
   </form>
@@ -18,14 +24,28 @@
 
 <p> Show total spending for month: </p> <form action="/budget/show/month/" method="post">
 
+<select name="month">
+  <% for month in @months %>
+  <option value="<%= month['index'] %>"><%= month['name'] %></option>
+  <%end %>
+</select>
 
+<!-- 
     <label>Month: (number)
       <input type="text" name="month">
-    </label>
+    </label> -->
 
 
     <input type="submit" value="SUBMIT">
   </form>
+
+<!-- 
+  <select name="tag_id">
+    <% for tag in @tags %>
+    <option value="<%= tag.id %>"><%= tag.tag_name %></option>
+    <%end %>
+  </select>
+  </label> -->
 
 
 
