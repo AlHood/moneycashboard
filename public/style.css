@@ -1,3 +1,66 @@
-body {
+
+
+header {
+  background-color: #3A7CA5;
+  padding: 15px;
+  font-family: 'Neuton', serif;
+
+}
+
+header > a {
+ font-size: 45px; 
+ color: #000000;
+}
+
+nav {
+  font-family: 'Neuton', serif;
+
+  }
+
+h1 { 
+  text-indent: 30px;
+font-family: 'Neuton', serif;
+background-color: #8EAFB2;
+border: 3px solid #8EAFB2;
+ }
+
+body { 
+  font-family: verdana;
+  background-color: #F7F6DA;
+text-indent: 4px;
   
 }
+
+a {
+  font-size: 20px;
+color: #A5C3D6;
+}
+
+
+.flex {
+  display: flex;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: flex;
+  background-color: #275476;
+  border: 20px solid #275476;
+}
+
+.column { 
+  -webkit-flex-direction: column; 
+  float: left;
+  -webkit-flex-flow: column wrap;
+height: 100vh;
+}
+
+tr:nth-child(even) {
+    background-color: #FFFFFF;
+}
+
+
+
