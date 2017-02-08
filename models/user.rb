@@ -20,10 +20,10 @@ def save
   end
 
   def self.all
-    sql = "SELECT * FROM users;"
-    users = SqlRunner.run(sql)
-    return users.map { |user| User.new(user)}
-  end
+      sql = "SELECT * FROM users;"
+      users = SqlRunner.run(sql)
+      return users.map { |user| User.new(user)}
+    end
 
   def self.delete_all() 
     sql = "DELETE FROM users;"

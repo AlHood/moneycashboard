@@ -1,7 +1,7 @@
 
 <h1> Total Spending: </h1>
-<p>Total spent month: <%= Transaction.total_by_month(params[:month]) %> </p>
-
+<p>Total spent in month: <%= Transaction.total_by_month(params[:month]) %> </p>
+<p> Reminder - Your monthly budget is: <% for user in @users %> <%=user.budget%> <% end %> </p>
 
 <h1> List of Transactions for your chosen month </h1>
 

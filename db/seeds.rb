@@ -18,6 +18,8 @@ transaction2 = Transaction.new('merchant' => "Betheringford & Montanepeace Estat
 transaction3 = Transaction.new('merchant' => "Tesco", 'tag_id' => 3, 'value' => 50, 'datestore' => "2017-05-01")
 
 
+
+
 tag1.save
 tag2.save
 tag3.save
@@ -26,8 +28,9 @@ transaction1.save
 transaction2.save
 transaction3.save
 
+user = User.new({'funds' => "850", 'budget' => "500"})
 
-
+user.save
 
 
 

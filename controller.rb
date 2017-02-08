@@ -16,7 +16,7 @@ end
 get '/budget/' do
   @transactions = Transaction.all 
   @tags = Tag.all
-  @months = [ { 'index' => 1, 'name' => 'January'}, { 'index' => 2, 'name' => 'January'}, { 'index' => 3, 'name' => 'January'}, { 'index' => 4, 'name' => 'January'}, { 'index' => 5, 'name' => 'January'}, { 'index' => 6, 'name' => 'January'}, { 'index' => 7, 'name' => 'January'}, { 'index' => 8, 'name' => 'January'}, { 'index' => 9, 'name' => 'January'}, { 'index' => 10, 'name' => 'January'}, { 'index' => 11, 'name' => 'January'}, { 'index' => 12, 'name' => 'January'} ]
+  @months = [ { 'index' => 1, 'name' => 'January'}, { 'index' => 2, 'name' => 'February'}, { 'index' => 3, 'name' => 'March'}, { 'index' => 4, 'name' => 'April'}, { 'index' => 5, 'name' => 'May'}, { 'index' => 6, 'name' => 'June'}, { 'index' => 7, 'name' => 'July'}, { 'index' => 8, 'name' => 'August'}, { 'index' => 9, 'name' => 'September'}, { 'index' => 10, 'name' => 'October'}, { 'index' => 11, 'name' => 'November'}, { 'index' => 12, 'name' => 'December'} ]
 
 
   erb ( :budget )
@@ -43,13 +43,13 @@ end
 post '/budget/tag/new/' do
   @newtag = Tag.new(params)
   @newtag.save
-  erb (:tag_create)
+  redirect to ("/budget/tag/")
 end 
 
 post '/budget/tag/edit/' do
   @newtag = Tag.new(params)
   @newtag.update
-  erb (:tag_edit)
+  redirect to ("/budget/tag/")
 end 
 
 get '/user/' do
@@ -57,11 +57,12 @@ get '/user/' do
 erb(:user)
 end
 
+
 post '/user/new/' do
 User.delete_all 
   @newuser = User.new(params)
   @newuser.save
-  erb (:user_create)
+  redirect to ("/user/")
 end
 
 
@@ -90,6 +91,7 @@ end
 
 post "/budget/show/month/" do
 @transactions = Transaction.return_month(params[:month])
+@users = User.all
 erb (:budget_month)
 end
 
